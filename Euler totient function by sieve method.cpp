@@ -1,19 +1,19 @@
-ll eulerPhi(ll n)
-{
-    ll res = n;
-    ll sqrtn = sqrt(n);
-    for(ll i = 0; i <= sqrtn; i++){
-        if(n%v[i] == 0){
-            while(n%v[i] == 0)
-                n /= v[i];
-            sqrtn = sqrt(n);
-            res /=  v[i];
-            res *= v[i]-1;
-        }
-    }
-    if(n != 1){
-        res /= n;
-        res *= n-1;
-    }
-    return res;
+#define MAX 10000000
+
+unsigned long long phi[MAX + 7];
+
+/**
+* It took 0.902 secs to generate up to 1e7.
+**/
+void generatePhi() {
+   phi[1] = 0;
+   for (int i = 2; i <= MAX; i++) {
+       if(!phi[i]) {
+           phi[i] = i-1;
+           for(int j = (i << 1); j <= MAX; j += i) {
+               if(!phi[j]) phi[j] = j;
+               phi[j] = phi[j] * (i-1) / i;
+           }
+       }
+   }
 }
