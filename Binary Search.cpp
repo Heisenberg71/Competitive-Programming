@@ -1,7 +1,7 @@
 /// NEVER UNDERESTIMATE THE POWER OF CONDITIONS IN BINARY SEARCH
 bool bs(int x, int n)
 {
-    int lo = 0, hi = n, md, prev = -1;
+    ll lo = 0, hi = n, md, prev = -1;
     while(lo < hi){
         md = (lo+hi)/2;
         if(v[md] == x) return 1;
@@ -15,33 +15,25 @@ bool bs(int x, int n)
 }
 
 /// LOWER BOUND
-int bs_lower_bound(int a[], int n, int x) {
-    int l = 0;
-    int h = n; // Not n - 1
-    while (l < h) {
-        int mid = (l + h) / 2;
-        if (x <= a[mid]) {
-            h = mid;
-        } else {
-            l = mid + 1;
-        }
+ll bs_lower_bound(int a[], int n, int x) {
+    ll lo = 0, hi = n, md;
+    while(lo < hi){
+        md = (lo+hi)/2;
+        if(x <= arr[md]) hi = md;
+        else lo = md+1;
     }
-    return l;
+    return lo;
 }
 
 /// UPPER BOUND
-int bs_upper_bound(int a[], int n, int x) {
-    int l = 0;
-    int h = n; // Not n - 1
-    while (l < h) {
-        int mid = (l + h) / 2;
-        if (x >= a[mid]) {
-            l = mid + 1;
-        } else {
-            h = mid;
-        }
+ll bs_upper_bound(int a[], int n, int x) {
+    ll lo = 0, hi = n, md;
+    while(lo < hi){
+        md = (lo+hi)/2;
+        if(x < arr[md]) hi = md;
+        else lo = md+1;
     }
-    return l;
+    return lo;
 }
 
 /// SPECIAL CONTITIONS
