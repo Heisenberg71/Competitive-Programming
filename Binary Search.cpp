@@ -1,5 +1,6 @@
 /// NEVER UNDERESTIMATE THE POWER OF CONDITIONS IN BINARY SEARCH
-bool bs(int x, int n)
+#define ll long long
+bool bs(ll x, ll n)
 {
     ll lo = 0, hi = n, md, prev = -1;
     while(lo < hi){
@@ -15,7 +16,7 @@ bool bs(int x, int n)
 }
 
 /// LOWER BOUND
-ll bs_lower_bound(int a[], int n, int x) {
+ll bs_lower_bound(ll a[], ll n, ll x) {
     ll lo = 0, hi = n, md;
     while(lo < hi){
         md = (lo+hi)/2;
@@ -26,7 +27,7 @@ ll bs_lower_bound(int a[], int n, int x) {
 }
 
 /// UPPER BOUND
-ll bs_upper_bound(int a[], int n, int x) {
+ll bs_upper_bound(ll a[], ll n, ll x) {
     ll lo = 0, hi = n, md;
     while(lo < hi){
         md = (lo+hi)/2;
