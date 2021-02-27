@@ -13,11 +13,11 @@ void dfs(ll u)
             if(vis[v] == 0){  /// TREE EDGES
                 par[v] = u;   /// SAVING PARTENTS
                 vis[v] = 1;   
-                dfs(v);
-                low[u] = min(low[u], low[v]);
+                dfs(v);       
+                low[u] = min(low[u], low[v]); /// IF TREE EDGE, LOW[U] = MIN(LOW[U] OF ALL OF ITS CHILD)
             }
             else if(vis[v] == 1){   /// BACK EDGES
-                low[u] = min(low[u], dis[v]);
+                low[u] = min(low[u], dis[v]); /// IF BACK EDGE, LOW[U] = MIN(MIN OF DIS[CHILD] AND LOW[U])
             }
             if(dis[u] < low[v]) ans.pb({min(u,v), max(u,v)});  /// ARTICULATION EDGES
         }
