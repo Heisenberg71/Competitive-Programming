@@ -7,7 +7,7 @@ int arr[LIM], dp[LIM][22], log_array[LIM];  /// NEVER USE LOG/SQRT ETC. IN SIZE 
                                             /// dp[array_size][log2(array_size)]
                                             /// dp[starting_index][range]
 
-void construct(int n)   /// n = ARRAY SIZE
+void construct(int n)   /// n = ARRAY SIZE; O(nlogn)
 {
     log_array[1] = 0;
     for(int i = 2; i <= n; i++)
@@ -26,7 +26,7 @@ void construct(int n)   /// n = ARRAY SIZE
 
 }
 
-int query(int L, int R)
+int query(int L, int R) /// O(1)
 {
     int len = R - L + 1;
     //if(len <= 0) return INT_MAX;
