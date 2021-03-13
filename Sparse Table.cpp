@@ -14,7 +14,7 @@ void construct(int n)   /// n = ARRAY SIZE; O(nlogn)
         log_array[i] = 1 + log_array[i / 2];    /// GENARATING 2 BASED LOG VALUES 1 TO n
 
     for(int i = 0; i < n; i++)
-        dp[i][0] = arr[i];      /// SINGLE RANGE RESULTS
+        dp[i][0] = arr[i];      /// SINGLE RANGE RESULTS or BASE CASE
 
     int k = log_array[n] + 1;
 
@@ -23,6 +23,10 @@ void construct(int n)   /// n = ARRAY SIZE; O(nlogn)
             dp[i][j] = min(dp[i][j - 1], dp[i + (1 << (j - 1))][j - 1]);
         }
     }
+    // dp[0...n-1][1]
+    // dp[0...n-1][2]
+    // ...
+    // dp[0...n-1][K]
 
 }
 
