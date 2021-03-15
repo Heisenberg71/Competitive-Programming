@@ -6,7 +6,7 @@ using namespace std;
 int parent[1005][22], depth[1005];
 vector <int> edg[1005];
 
-void dfs(int u, int pr)
+void dfs(int u, int pr) /// O(n)
 {
     if(pr != -1)
         depth[u] = depth[pr] + 1;
@@ -19,7 +19,7 @@ void dfs(int u, int pr)
 
 }
 
-void build(int n)
+void build(int n)   /// O(nlogn)
 {
     int lg = log2(n) + 1;
 
@@ -32,7 +32,7 @@ void build(int n)
 
 }
 
-int findLCA(int n, int u, int v)
+int findLCA(int n, int u, int v)    /// O(nlogn)
 {
     if(depth[u] > depth[v]) swap(u, v);
 
