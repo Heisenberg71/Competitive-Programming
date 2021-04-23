@@ -2,7 +2,7 @@
 #define pb push_back
 
 bool status[LIM]; /// NEED A GLOBAL ARRAY
-vector <int> v;
+vector <int> prime;
 void make_primes(int N)
 {
     int i, j, sqrtN;
@@ -15,6 +15,6 @@ void make_primes(int N)
                 status[j] = 1;
         }
     }
-    for(i = 0; i < LIM; i++) if(status[i] == 0) v.pb(i);
+    for(i = 0; i < LIM; i++) if(status[i] == 0) prime.pb(i);
     //for(i = 0; i < 10000005; i++) cout << v[i] << endl;
 }
