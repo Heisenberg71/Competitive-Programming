@@ -33,7 +33,10 @@ void factor(int n)
             n /= prime[i];
             cnt++;
         }
-        if(cnt) prime_pow.pb({prime[i], cnt*m});
+        if(cnt) prime_pow.pb({prime[i], cnt});
     }
-    if(n != 1) prime_pow.pb({n, 1*m});
+    if(n != 1) prime_pow.pb({n, 1});
 }
+
+make_prime() /// NEED TO CALL THE FUNCTION FROM MAIN
+factor()     /// NEED TO CALL THE FUNCTION FROM MAIN
