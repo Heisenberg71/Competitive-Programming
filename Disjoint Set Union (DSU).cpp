@@ -1,6 +1,6 @@
 int findP(int u)
 {
-    if(pr[u] == u) return u;
+    if(u == pr[u]) return u;
     return pr[u] = findP(pr[u]);
 }
 
@@ -8,8 +8,8 @@ void connect(int u, int v)
 {
     u = findP(u);
     v = findP(v);
-
-    pr[u] = v;
+    if(u != v)
+        pr[u] = v;
 }
 
 /// findP(value)  NEED TO CALL FROM MAIN
