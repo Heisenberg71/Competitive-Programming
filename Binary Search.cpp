@@ -16,26 +16,38 @@ bool bs(ll x, ll n)
 }
 
 /// LOWER BOUND
-ll bs_lower_bound(ll a[], ll n, ll x) {
-    ll lo = 0, hi = n, md;
-    while(lo < hi){
-        md = (lo+hi)/2;
-        if(x <= arr[md]) hi = md;
-        else lo = md+1;
+ll lb(ll val)
+{
+    ll lo = 0, hi = n - 1, md, ans = 0;
+    while(lo <= hi){
+        md = lo + (hi - lo) / 2;
+        if(val <= y[md]){
+            ans = md;
+            hi = md - 1;
+        }
+        else{
+            lo = md + 1;
+        }
     }
     return lo;
-}
+
 
 /// UPPER BOUND
-ll bs_upper_bound(ll a[], ll n, ll x) {
-    ll lo = 0, hi = n, md;
-    while(lo < hi){
-        md = (lo+hi)/2;
-        if(x < arr[md]) hi = md;
-        else lo = md+1;
+ll ub(ll val)
+{
+    ll lo = 0, hi = n - 1, md, ans = n;
+    while(lo <= hi){
+        md = lo + (hi - lo) / 2;
+        if(val < y[md]){
+            ans = md;
+            hi = md - 1;
+        }
+        else{
+            lo = md + 1;
+        }
     }
     return lo;
-}
+
 
 /// SPECIAL CONTITIONS
 
