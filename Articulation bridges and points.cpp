@@ -26,5 +26,34 @@ void dfs(ll u)
     vis[u] = 2;   /// FORWARD EDGES
 }
 
+
+
+
 /// ARTICULATION POINTS
+int n, m, tim, dis[LIM], low[LIM], par[LIM];
+vector <int> edg[LIM], artpoint;
+
+void dfs(int u)
+{
+    dis[u] = low[u] = tim++;
+    int child = 0, mx = -inf;
+    for(int i = 0; i < edg[u].size(); i++){
+        int v = edg[u][i];
+        if(v != par[u]){
+            if(dis[v]){     /// BACK EDGE
+                low[u] = min(low[u], dis[v]); /// IF TREE EDGE, LOW[U] = MIN(LOW[U] OF ALL OF ITS CHILD)
+            }
+            else{           /// TREE EDGE
+                par[v] = u; /// SAVING PARENT
+                dfs(v);
+                low[u] = min(low[u], low[v]);   /// IF BACK EDGE, LOW[U] = MIN(MIN OF DIS[CHILD] AND LOW[U])
+                if(low[v] >= dis[u] && u != 1)
+                    mx = max(mx, dis[v]);
+                child++;
+            }
+        }
+    }
+    if(u != 1 && mx >= dis[u]) artpoint.pb(u);  /// IF THE NODE IS NOT ROOT
+    if(u == 1 && child > 1) artpoint.pb(u);     /// IF THE NODE IS ROOT CHECK IF (#CHILD > 1)
+}
 
