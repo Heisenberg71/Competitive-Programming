@@ -41,12 +41,12 @@ void dfs(int u)
         int v = edg[u][i];
         if(v != par[u]){
             if(dis[v]){     /// BACK EDGE
-                low[u] = min(low[u], dis[v]); /// IF TREE EDGE, LOW[U] = MIN(LOW[U] OF ALL OF ITS CHILD)
+                low[u] = min(low[u], dis[v]); /// IF BACK EDGE, LOW[U] = MIN(MIN OF DIS[CHILD] AND LOW[U])
             }
             else{           /// TREE EDGE
                 par[v] = u; /// SAVING PARENT
                 dfs(v);
-                low[u] = min(low[u], low[v]);   /// IF BACK EDGE, LOW[U] = MIN(MIN OF DIS[CHILD] AND LOW[U])
+                low[u] = min(low[u], low[v]);   /// IF TREE EDGE, LOW[U] = MIN(LOW[U] OF ALL OF ITS CHILD)
                 if(low[v] >= dis[u] && u != 1)
                     mx = max(mx, dis[v]);
                 child++;
