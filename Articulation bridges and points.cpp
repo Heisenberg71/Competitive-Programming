@@ -4,7 +4,7 @@
 #define LIM 100005    /// MACROS NEEDED
 ll dis[LIM], vis[LIM], par[LIM], low[LIM], cnt, n;
 vector <ll> ver[LIM];
-vector <pair<ll,ll> > ans;
+vector <pair<ll,ll> > bridges;
 void dfs(ll u)
 {
     dis[u] = low[u] = cnt++;
@@ -20,7 +20,7 @@ void dfs(ll u)
             else if(vis[v] == 1){   /// BACK EDGES
                 low[u] = min(low[u], dis[v]); /// IF BACK EDGE, LOW[U] = MIN(MIN OF DIS[CHILD] AND LOW[U])
             }
-            if(dis[u] < low[v]) ans.pb({min(u,v), max(u,v)});  /// ARTICULATION EDGES
+            if(dis[u] < low[v]) bridges.pb({min(u,v), max(u,v)});  /// ARTICULATION EDGES
         }
     }
     vis[u] = 2;   /// FORWARD EDGES
@@ -54,6 +54,6 @@ void dfs(int u)
         }
     }
     if(u != 1 && mx >= dis[u]) artpoint.pb(u);  /// IF THE NODE IS NOT ROOT
-    if(u == 1 && child > 1) artpoint.pb(u);     /// IF THE NODE IS ROOT CHECK IF (#CHILD > 1)
+    if(u == 1 && child > 1) artpoint.pb(u);     /// IF THE NODE IS ROOT CHECK IF (# OF CHILD > 1)
 }
 
