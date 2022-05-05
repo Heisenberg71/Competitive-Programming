@@ -1,3 +1,14 @@
+/**
+
+Here's what I did. I performed dijkstra on this graph and kept 3 parameters: the current distance, current X, current node.
+Then I traverse through all the adjacent nodes of the current node. If the weight of an edge is smaller than the current X, then we have nothing to do. 
+Otherwise, if the sum of the current distance and the weight of the edge is smaller than the current minimum distance, then update the distance and push 
+it onto the priority queue. Protibar eitao dekhsi je node 'v' te ashte maximum koto weight er edge diye ashte parsi. 
+Because larger weight means there is a higher chance of getting a bigger GCD. jodi dekhi je current X aar edge er weight er 
+GCD , ager max value er cheye beshi, tahole shetao priority queue te push korsi. eibhabe kore dekshi minimum koto distance e asha jaay.
+
+*/
+
 #include <bits/stdc++.h>
 #define ll long long
 #define LIM 100005
