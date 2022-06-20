@@ -4,7 +4,7 @@
 #define mod 1000000007
 using namespace std;
 
-ll fac[LIM];
+ll fac[LIM], facInv[LIM];
 
 ll Tzeros(int n, int base) /// O(log(n))
 {
@@ -14,13 +14,6 @@ ll Tzeros(int n, int base) /// O(log(n))
         n /= base;
     }
     return res;
-}
-
-void makeFact() /// O(n)
-{
-    fac[0] = 1;
-    for(int i = 1; i < LIM; i++)
-        fac[i] = (i*fac[i - 1]) %mod;
 }
 
 ll bigmod(ll a, ll b) /// O(log(b))
@@ -35,11 +28,20 @@ ll bigmod(ll a, ll b) /// O(log(b))
     return res;
 }
 
-ll ncr(int n, int r) /// O(log(n))
+void makeFact() /// O(nlogn)
+{
+    fac[0] = 1, facInv[0] = 1;
+    for(int i = 1; i < LIM; i++){
+        fac[i] = (i*fac[i - 1]) %mod;
+        facInv[i] = bigmod(fac[i], mod - 2);
+    }
+}
+
+ll ncr(int n, int r) /// O(1)
 {
     ll up = fac[n];
-    ll down = (fac[r]*fac[n - r]) %mod;
-    return (up*bigmod(down, mod - 2)) %mod;
+    ll down = (facInv[r]*facInv[n - r]) %mod;
+    return (up*down) %mod;
 }
 
 int main()
