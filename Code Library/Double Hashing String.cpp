@@ -45,5 +45,5 @@ ll evaluateHash2(int idx, int L, int R)
     return ((prefHash2[idx][R] - (prefHash2[idx][L - 1]*basePower2[R - L + 1]) %mod2) %mod2 + mod2) %mod2;
 }
 
-/// use evaluateHash(0, L, R) to get hash value from L to R for base and mod
-/// use evaluateHash(1, L, R) to get hash value from L to R for base2 and mod2
+/// use evaluateHash(0/1, L, R) to get hash value from L to R for base and mod of prefix string 0/1
+/// use evaluateHash2(0,1, L, R) to get hash value from L to R for base2 and mod2 of prefix string 0/1
