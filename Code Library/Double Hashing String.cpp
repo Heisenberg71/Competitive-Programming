@@ -3,7 +3,7 @@
 ll prefHash[2][LIM], basePower[2][LIM];
 ll mod[2] = {1000000007, 1000000009};
 ll base[2] = {31, 101};
-string str, patt;
+string str;
 char temp[LIM];
 
 void preCal()
