@@ -14,6 +14,7 @@ void dj(int dis, int node)
     pq.push({dis,node}); arr[node] = 0;
     while(!pq.empty()){
         up = pq.top(); pq.pop();
+        if(arr[up] <= up.ff) continue;
         for(int i = 0; i < v[up.ss].size(); i++){
             int ver = v[up.ss][i];
             int wei = w[up.ss][i];
