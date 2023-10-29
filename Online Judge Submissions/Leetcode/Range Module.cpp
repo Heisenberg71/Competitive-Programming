@@ -1,4 +1,10 @@
+/*
 
+Problem Link: https://leetcode.com/problems/range-module/description/
+Time Complexity: O(amount_of_all_function_calls*log(amounts_of_updates))
+Space Complexity: O(amount_of_all_updates*log(amount_of_all_updates))
+
+*/
 class Node{
     public:
     int l, r;
